@@ -1,11 +1,654 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CFR Project Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project page for Remove the Ambiguity: Few-shot Multimodal Anomaly Detection Using Crossmodal Feature Replacer.">
+  <title>CFR | Crossmodal Feature Replacer</title>
+  <style>
+    :root {
+      --ink: #1d2329;
+      --muted: #5d6875;
+      --line: #dce3e8;
+      --paper: #fbfcfa;
+      --soft: #eef6f3;
+      --teal: #087b76;
+      --orange: #d66a25;
+      --red: #b8343f;
+      --charcoal: #22282d;
+      --shadow: 0 18px 45px rgba(22, 31, 38, 0.14);
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(29, 35, 41, 0.78);
+      color: white;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: 64px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #18a999, #f0a44f 52%, #c43d49);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28) inset;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: calc(82vh - 64px);
+      min-height: calc(82svh - 64px);
+      display: grid;
+      align-items: end;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: white;
+      background-image:
+        linear-gradient(90deg, rgba(19, 23, 27, 0.92) 0%, rgba(19, 23, 27, 0.76) 40%, rgba(19, 23, 27, 0.32) 100%),
+        url("assets/qualitative.png");
+      background-size: cover;
+      background-position: center 42%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background: linear-gradient(0deg, rgba(15, 20, 24, 0.78), rgba(15, 20, 24, 0));
+      z-index: -1;
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 56px));
+      margin: 0 auto;
+      padding: 86px 0 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: #b8fff3;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(38px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 780px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.14);
+      color: white;
+      font-weight: 760;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .button.primary {
+      background: white;
+      color: var(--charcoal);
+      border-color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    section {
+      padding: 76px 28px;
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .band-soft {
+      background: var(--soft);
+      border-block: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.4fr);
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(27px, 3.2vw, 44px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.76);
+      padding: 20px;
+    }
+
+    .stat-value {
+      display: block;
+      color: var(--teal);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      font-weight: 850;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .method-step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 24px;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--charcoal);
+      color: white;
+      font-weight: 820;
+    }
+
+    .method-step h3 {
+      margin: 18px 0 10px;
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .method-step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .figure {
+      margin: 34px 0 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .figure img {
+      width: 100%;
+      background: white;
+    }
+
+    .figure figcaption {
+      margin: 0;
+      padding: 15px 18px 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .result-table th {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #f6f8f7;
+    }
+
+    .result-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .metric-strong {
+      color: var(--red);
+      font-weight: 850;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .callout {
+      border-left: 4px solid var(--orange);
+      padding: 6px 0 6px 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .bibtex {
+      margin: 0;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #20262b;
+      color: #e9f2ef;
+      padding: 22px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    footer {
+      padding: 34px 28px 46px;
+      color: var(--muted);
+      background: #f4f6f4;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    footer .section-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        min-height: 58px;
+        padding: 0 18px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: calc(84vh - 58px);
+        min-height: calc(84svh - 58px);
+      }
+
+      .hero-inner {
+        width: min(100% - 36px, var(--max));
+        padding: 70px 0 54px;
+      }
+
+      section {
+        padding: 58px 18px;
+      }
+
+      .section-head,
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .result-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Crossmodal Feature Replacer</h1>
-  <p>Project page for our paper.</p>
+  <header class="topbar">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="CFR home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>CFR</span>
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-inner">
+        <p class="eyebrow">ICML 2026 Submission</p>
+        <h1 id="title">Remove the Ambiguity: Few-shot Multimodal Anomaly Detection Using Crossmodal Feature Replacer</h1>
+        <p class="subtitle">
+          CFR resolves one-to-many RGB-3D feature ambiguity by combining cyclic crossmodal reconstruction with selective inference-time feature replacement.
+        </p>
+        <div class="actions" aria-label="Project links">
+          <a class="button primary" href="assets/CFR_ICML2026.pdf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            Paper
+          </a>
+          <a class="button" href="https://github.com/Yuan-Honoka-Guo/CrossmodalFeatureReplacer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.81 1.1.81 2.22v3.3c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
+            Code
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="band-soft">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Abstract</h2>
+          <p class="lead">
+            Reconstruction-based multimodal anomaly detection suffers from one-to-many crossmodal mapping: a single 3D feature can correspond to multiple plausible RGB appearances. Deterministic regression collapses these valid targets into over-smoothed reconstructions, weakening anomaly discrimination. CFR learns bidirectional cyclic mappings for coarse crossmodal reconstruction, identifies unreliable reconstructed features, and selectively replaces them with high-confidence normal features at inference time.
+          </p>
+        </div>
+        <div class="stats" aria-label="Headline 1-shot results">
+          <div class="stat">
+            <span class="stat-value">92.3</span>
+            <span class="stat-label">AUPRO@30% FPR on MVTec 3D-AD, 1-shot</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">82.7</span>
+            <span class="stat-label">AUPRO@30% FPR on Eyecandies, 1-shot</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">74.2</span>
+            <span class="stat-label">Image-level AUROC on MVTec 3D-AD, 1-shot</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">75.9</span>
+            <span class="stat-label">Image-level AUROC on Eyecandies, 1-shot</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Method</h2>
+          <p class="lead">
+            CFR treats reconstruction and retrieval as complementary tools. Reconstruction provides an initial RGB-3D prediction, while retrieval is invoked only for ambiguous regions whose reconstructed features are unreliable.
+          </p>
+        </div>
+        <figure class="figure">
+          <img src="assets/framework.png" alt="Overview diagram of Crossmodal Feature Replacer with reconstruction, retrieval, and feature replacement stages.">
+          <figcaption>Overview of Crossmodal Feature Replacer. CFR reconstructs crossmodal feature maps, retrieves confident normal candidates, and replaces unreliable features before anomaly scoring.</figcaption>
+        </figure>
+        <div class="method-grid">
+          <article class="method-step">
+            <div class="step-number">1</div>
+            <h3>Crossmodal feature learning</h3>
+            <p>Frozen RGB and 3D feature extractors feed lightweight cyclic mappings that align appearance and geometry while preserving bidirectional consistency.</p>
+          </article>
+          <article class="method-step">
+            <div class="step-number">2</div>
+            <h3>Attention-aided retrieval</h3>
+            <p>Key-value crossmodal memory banks store paired normal features. A compact attention module retrieves candidates that are more reliable than collapsed reconstructions.</p>
+          </article>
+          <article class="method-step">
+            <div class="step-number">3</div>
+            <h3>Feature replacement</h3>
+            <p>At inference time, CFR filters low-confidence reconstructed features and selectively replaces them with high-confidence normal features for sharper anomaly maps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="band-soft">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Results</h2>
+          <p class="lead">
+            Under 1, 2, and 4-shot normal-only training, CFR improves both image-level detection and pixel-level localization on MVTec 3D-AD and Eyecandies.
+          </p>
+        </div>
+        <table class="result-table" aria-label="Few-shot headline results">
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Setting</th>
+              <th>I-AUROC</th>
+              <th>AUPRO@30% FPR</th>
+              <th>Observation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MVTec 3D-AD</td>
+              <td>1-shot</td>
+              <td><span class="metric-strong">74.2</span></td>
+              <td><span class="metric-strong">92.3</span></td>
+              <td>Strong localization with only one normal sample per class.</td>
+            </tr>
+            <tr>
+              <td>MVTec 3D-AD</td>
+              <td>4-shot</td>
+              <td><span class="metric-strong">80.5</span></td>
+              <td><span class="metric-strong">94.2</span></td>
+              <td>More normal samples improve both image and pixel metrics.</td>
+            </tr>
+            <tr>
+              <td>Eyecandies</td>
+              <td>1-shot</td>
+              <td><span class="metric-strong">75.9</span></td>
+              <td><span class="metric-strong">82.7</span></td>
+              <td>Large gains on appearance-diverse objects with RGB-3D ambiguity.</td>
+            </tr>
+            <tr>
+              <td>Eyecandies</td>
+              <td>4-shot</td>
+              <td><span class="metric-strong">77.9</span></td>
+              <td><span class="metric-strong">84.7</span></td>
+              <td>Maintains high localization quality in richer few-shot settings.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="two-col" style="margin-top: 18px;">
+          <figure class="figure">
+            <img src="assets/qa.png" alt="Qualitative anomaly localization comparison on Licorice Sandwich samples.">
+            <figcaption>Qualitative examples on Licorice Sandwich. CFR reduces false positives caused by color-geometry ambiguity.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/aupro_curves.png" alt="AUPRO FPR curves for MVTec 3D-AD and Eyecandies.">
+            <figcaption>AUPRO-FPR curves show robust localization across false-positive budgets.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Why It Works</h2>
+          <div>
+            <p class="lead">
+              One-to-many crossmodal correspondence makes deterministic RGB-3D regression brittle. CFR avoids forcing a single reconstruction to explain every valid appearance. Instead, it detects where reconstruction is uncertain and corrects only those feature locations.
+            </p>
+            <p class="callout">
+              In the ablation study, attention-aided retrieval improves the mean 1-shot I-AUROC from 75.1 to 81.3 and AUPRO@30% FPR from 82.6 to 85.4 on ambiguity-heavy categories.
+            </p>
+          </div>
+        </div>
+        <figure class="figure">
+          <img src="assets/qualitative.png" alt="Qualitative examples on Eyecandies showing RGB, ground truth, depth, and CFR anomaly heatmaps.">
+          <figcaption>Eyecandies qualitative examples. Despite similar 3D geometry and diverse RGB appearances, CFR localizes anomalies while suppressing ambiguity-induced responses.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="citation" class="band-soft">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Citation</h2>
+          <p class="lead">
+            The submission TeX currently uses anonymous placeholder authors, so the citation block keeps the author field anonymous until the public author list is ready.
+          </p>
+        </div>
+        <pre class="bibtex"><code>@inproceedings{cfr2026,
+  title = {Remove the Ambiguity: Few-shot Multimodal Anomaly Detection Using Crossmodal Feature Replacer},
+  author = {Anonymous},
+  booktitle = {International Conference on Machine Learning},
+  year = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="section-inner">
+      <span>Crossmodal Feature Replacer</span>
+      <span>ICML 2026 project page</span>
+    </div>
+  </footer>
 </body>
 </html>

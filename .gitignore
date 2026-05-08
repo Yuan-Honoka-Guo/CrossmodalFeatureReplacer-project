@@ -1,0 +1,5 @@
+.DS_Store
+*.pdf
+*.txt
+!assets/CFR_ICML2026.pdf
+CFR_camera_ready/
